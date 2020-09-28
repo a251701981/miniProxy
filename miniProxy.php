@@ -1,6 +1,11 @@
 <?php
+function mlog($msg)
+{
+  file_put_contents("./log.txt",$msg,FILE_APPEND);
+}
 set_error_handler(function($errno, $errstr, $errfile, $errline)
 {
+  ob_start();
     switch ($errno) {
     case E_NOTICE:
         echo "<b>My NOTICE</b> [$errno] $errstr<br />\n";
@@ -12,7 +17,8 @@ set_error_handler(function($errno, $errstr, $errfile, $errline)
         echo "Unknown error type: [$errno] $errstr<br />\n";
         break;
     }
-    exit;
+    mlog(ob_get_contents());
+    ob_end_clean();
     return true;
 });
 
