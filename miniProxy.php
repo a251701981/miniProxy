@@ -64,7 +64,7 @@ if (version_compare(PHP_VERSION, "5.4.7", "<")) {
   die("miniProxy requires PHP version 5.4.7 or later.");
 }
 
-$requiredExtensions = ["curl", "mbstring","xml"];
+$requiredExtensions = ["curl", /*"mbstring",*/"xml"];
 foreach($requiredExtensions as $requiredExtension) {
   if (!extension_loaded($requiredExtension)) {
     die("miniProxy requires PHP's \"" . $requiredExtension . "\" extension. Please install/enable it on your server and try again.");
@@ -439,10 +439,10 @@ if (isset($responseInfo["content_type"])) $contentType = $responseInfo["content_
 if (stripos($contentType, "text/html") !== false) {
 
   //Attempt to normalize character encoding.
-   $detectedEncoding = mb_detect_encoding($responseBody, "UTF-8, ISO-8859-1");
-   if ($detectedEncoding) {
-    $responseBody = mb_convert_encoding($responseBody, "HTML-ENTITIES", $detectedEncoding);
-   }
+   //$detectedEncoding = mb_detect_encoding($responseBody, "UTF-8, ISO-8859-1");
+   //if ($detectedEncoding) {
+    //$responseBody = mb_convert_encoding($responseBody, "HTML-ENTITIES", $detectedEncoding);
+   //}
 
   //Parse the DOM.
   $doc = new DomDocument();
