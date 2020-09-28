@@ -12,7 +12,7 @@ set_error_handler(function($errno, $errstr, $errfile, $errline)
         echo "Unknown error type: [$errno] $errstr<br />\n";
         break;
     }
-
+    exit;
     return true;
 });
 
