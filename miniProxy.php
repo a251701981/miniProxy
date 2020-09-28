@@ -268,7 +268,6 @@ function makeRequest($url) {
 
   //Make the request.
   $response = curl_exec($ch);
-    var_dump($response);exit;
   $responseInfo = curl_getinfo($ch);
   $headerSize = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
   curl_close($ch);
