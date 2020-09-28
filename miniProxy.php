@@ -1,4 +1,25 @@
 <?php
+set_error_handler(function($errno, $errstr, $errfile, $errline)
+{
+    switch ($errno) {
+    case E_NOTICE:
+        echo "<b>My NOTICE</b> [$errno] $errstr<br />\n";
+        break;
+    case E_ERROR:
+        echo "<b>My ERROR</b> [$errno] $errstr<br />\n";
+        break;
+    default:
+        echo "Unknown error type: [$errno] $errstr<br />\n";
+        break;
+    }
+
+    return true;
+});
+
+
+error_reporting(E_ALL);
+ini_set("error_reporting", "E_ALL");
+
 /*
 NOTE: miniProxy IS NO LONGER MAINTAINED AS OF APRIL 26th, 2020.
 IF YOU USE IT, YOU DO SO ENTIRELY AT YOUR OWN RISK.
