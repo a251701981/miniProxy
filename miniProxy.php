@@ -1,5 +1,4 @@
 <?php
-echo 1;exit;
 set_error_handler(function($errno, $errstr, $errfile, $errline)
 {
     switch ($errno) {
