@@ -1,6 +1,9 @@
 <?php
 function mlog($msg)
 {
+  return;
+  file_put_contents("./log.txt","\r\n",FILE_APPEND);
+  file_put_contents("./log.txt",date("Y-m-d H:i:s"),FILE_APPEND);
   file_put_contents("./log.txt",$msg,FILE_APPEND);
 }
 set_error_handler(function($errno, $errstr, $errfile, $errline)
